@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -54,4 +55,17 @@ dependencies {
 
     // PAGER
     implementation("com.google.accompanist:accompanist-pager:0.23.0")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.bls.compose_onboarding"
+                artifactId = "compose-onboarding"
+                version = "1.0.0"
+            }
+        }
+    }
 }
