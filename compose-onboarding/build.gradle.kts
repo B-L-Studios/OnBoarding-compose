@@ -57,14 +57,15 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager:0.23.0")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.B-L-Studios"
+            artifactId = "OnBoarding-compose"
+            version = "1.0.1"
+
+            afterEvaluate {
                 from(components["release"])
-                groupId = "com.bls.compose_onboarding"
-                artifactId = "compose-onboarding"
-                version = "1.0.0"
             }
         }
     }
